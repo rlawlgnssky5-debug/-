@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  </style>
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <a class="wordmark" href="#/">WISTIA</a>
+    <nav class="category-nav"><a href="#/song">축가</a></nav>
+  </header>
+  <main>
+    <section class="hero-home">
+      <div class="hero-home-inner">
+        <p class="eyebrow">WEDDING VOCAL FILM</p>
+        <h1><span>목소리로 남기는</span><span>가장 특별한 순간</span></h1>
+      </div>
+    </section>
+    <section class="product-gateway">
+      <div class="narrow"><h2>어떤 순간을 준비하고 계신가요</h2></div>
+    </section>
+  </main>
+  <script>
+    addEventListener("load", () => {
+      const box = selector => {
+        const rect = document.querySelector(selector).getBoundingClientRect()
+        return { left: rect.left, right: rect.right, width: rect.width }
+      }
+      document.body.innerHTML = `<pre id="result">${JSON.stringify({
+        viewport: document.documentElement.clientWidth,
+        header: box(".site-header"),
+        wordmark: box(".wordmark"),
+        hero: box(".hero-home-inner"),
+        gateway: box(".product-gateway .narrow")
+      })}</pre>`
+    })
+  </script>
+</body>
+</html>
