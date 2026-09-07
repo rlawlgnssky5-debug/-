@@ -137,7 +137,7 @@ function renderHome() {
       <p class="eyebrow">WEDDING VOCAL FILM</p>
       <h1><span>목소리로 남기는</span><span>가장 특별한 순간</span></h1>
       <p class="lead">직접 부른 노래와 이야기를<br>결혼식과 프로포즈를 위한 하나의 작품으로 완성합니다</p>
-      <a class="hero-cta" href="#/detail/wedding">우리의 이야기를 담아보세요 <span aria-hidden="true">→</span></a>
+      <a class="hero-cta" id="heroKakaoLink" href="${escapeHtml(config.accounts?.kakao || KAKAO_FALLBACK)}" target="_blank" rel="noopener">우리의 이야기를 담아보세요 <span aria-hidden="true">→</span></a>
     </div></section>
     <section class="product-gateway"><div class="narrow">
       <h2>어떤 순간을 준비하고 계신가요</h2>
