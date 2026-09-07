@@ -131,13 +131,13 @@ function choiceRow(href, number, title, description) {
 }
 
 function renderHome() {
-  document.body.dataset.page = "home"
   app.innerHTML = `
-    <section class="hero-home"><div class="hero-home-inner">
-      <img class="hero-logo" src="assets/img/wistia-logo.png" alt="WISTIA 위스티아">
+    <section class="hero-home" aria-label="WISTIA 웨딩 보컬 필름">
+      <div class="hero-home-inner">
       <p class="eyebrow">WEDDING VOCAL FILM</p>
-      <h1>목소리로 남기는 가장 특별한 순간</h1>
+      <h1><span>목소리로 남기는</span><span>가장 특별한 순간</span></h1>
       <p class="lead">직접 부른 노래와 이야기를<br>결혼식과 프로포즈를 위한 하나의 작품으로 완성합니다</p>
+      <a class="hero-cta" href="#/detail/wedding">우리의 이야기를 담아보세요 <span aria-hidden="true">→</span></a>
     </div></section>
     <section class="product-gateway"><div class="narrow">
       <h2>어떤 순간을 준비하고 계신가요</h2>
@@ -293,6 +293,7 @@ function updateNavigation(category) {
 function route() {
   const path = location.hash.replace(/^#/, "") || "/"
   const parts = path.split("/").filter(Boolean)
+  document.body.dataset.page = parts.length ? "inner" : "home"
   if (!parts.length) { updateNavigation(""); renderHome() }
   else if (parts[0] === "song") { updateNavigation("song"); renderSongPicker() }
   else if (parts[0] === "detail" && PRODUCTS[parts[1]]) { updateNavigation(PRODUCTS[parts[1]].category); renderDetail(parts[1]) }
