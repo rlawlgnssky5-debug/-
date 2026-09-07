@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  </style>
+</head>
+<body>
+  <header><nav><a data-category="song" href="#/song">축가</a></nav></header>
+  <main id="app" tabindex="-1"></main>
+  <footer><a id="instagramLink"></a><a id="youtubeLink"></a><a id="kakaoFooterLink"></a></footer>
+  <div class="modal" id="consultModal" aria-hidden="true">
+    <button data-close-modal></button><button id="copyConsult"></button><button id="openKakao"></button>
+  </div>
+  <script>location.hash = "#/song"</script>
+  <script src="../js/app.js"></script>
+  <script>
+    route()
+    const cards = [...document.querySelectorAll(".song-card")].map(card => {
+      const cardRect = card.getBoundingClientRect()
+      const imageRect = card.querySelector(".song-card-image").getBoundingClientRect()
+      return { href: card.getAttribute("href"), top: cardRect.top, left: cardRect.left, width: cardRect.width, height: cardRect.height, imageWidth: imageRect.width }
+    })
+    const result = document.createElement("pre")
+    result.id = "result"
+    result.textContent = JSON.stringify({ viewport: document.documentElement.clientWidth, cards })
+    document.body.replaceChildren(result)
+  </script>
+</body>
+</html>

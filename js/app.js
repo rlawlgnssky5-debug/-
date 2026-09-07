@@ -130,6 +130,10 @@ function choiceRow(href, number, title, description) {
   return `<a class="choice-row" href="${href}"><span class="choice-number">${number}</span><span class="choice-copy"><strong>${title}</strong><span>${description}</span></span><span class="choice-arrow" aria-hidden="true">→</span></a>`
 }
 
+function songCard(href, number, title, description, image, alt) {
+  return `<a class="song-card" href="${href}"><span class="song-card-copy"><span class="song-card-number">${number}</span><strong>${title}</strong><span>${description}</span><i aria-hidden="true">→</i></span><span class="song-card-image"><img src="${image}" alt="${alt}"></span></a>`
+}
+
 function renderHome() {
   app.innerHTML = `
     <section class="hero-home" aria-label="WISTIA 웨딩 보컬 필름">
@@ -150,11 +154,11 @@ function renderHome() {
 }
 
 function renderSongPicker() {
-  app.innerHTML = `<div class="narrow">
+  app.innerHTML = `<div class="narrow song-picker-page">
     <section class="page-hero"><p class="eyebrow">WEDDING SONG</p><h1>축가</h1><p class="hero-copy">결혼식에서 더 안정적으로 목소리를 전할 수 있도록<br>부르는 인원에 맞는 상품을 선택해 주세요</p></section>
-    <section class="product-gateway"><h2>어떻게 부르시나요</h2><div class="choice-list">
-      ${choiceRow("#/detail/solo", "01", "1인 축가", "혼자 부르는 축가 녹음")}
-      ${choiceRow("#/detail/duo", "02", "2인 축가", "함께 부르는 듀엣 축가")}
+    <section class="product-gateway song-picker"><h2>어떻게 부르시나요</h2><div class="song-card-list">
+      ${songCard("#/detail/solo", "01", "1인 축가", "혼자 부르는<br>축가 녹음", "assets/img/song/solo.webp", "따뜻한 조명 아래 놓인 녹음용 마이크")}
+      ${songCard("#/detail/duo", "02", "2인 축가", "함께 부르는<br>듀엣 축가", "assets/img/song/duo.webp", "마이크 앞에서 함께 노래하는 두 사람")}
     </div></section>
   </div>`
 }

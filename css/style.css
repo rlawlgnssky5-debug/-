@@ -46,6 +46,20 @@ main{min-height:72vh}
 .choice-copy span{display:block;color:var(--muted);font-size:14px;line-height:1.6}
 .choice-arrow{font-size:25px;font-weight:300;color:#9d9d9d;transition:transform .2s}
 .choice-row:hover .choice-arrow{transform:translateX(4px)}
+.song-picker-page{width:min(calc(100% - 48px),980px)}
+.song-picker{padding-top:58px}
+.song-card-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.song-card{display:grid;grid-template-columns:44% 56%;min-height:180px;overflow:hidden;border:1px solid #eee9e1;border-radius:10px;background:#fbf8f3;box-shadow:0 10px 30px rgba(93,72,49,.035);transition:transform .25s ease,box-shadow .25s ease}
+.song-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(93,72,49,.09)}
+.song-card-copy{display:flex;align-items:flex-start;flex-direction:column;padding:22px 14px 16px 22px}
+.song-card-number{margin-bottom:13px;font:600 9px/1 "Inter",sans-serif;letter-spacing:.18em;color:#a69c90}
+.song-card-copy strong{margin-bottom:9px;font-family:"Noto Serif KR",serif;font-size:22px;font-weight:600;letter-spacing:-.045em}
+.song-card-copy>span:not(.song-card-number){color:#80766d;font-size:12px;line-height:1.65}
+.song-card-copy i{display:grid;place-items:center;width:27px;height:27px;margin-top:auto;border:1px solid #aaa197;border-radius:50%;color:#716960;font:400 14px/1 sans-serif;font-style:normal;transition:transform .2s ease,background .2s ease}
+.song-card:hover .song-card-copy i{transform:translateX(3px);background:#fff}
+.song-card-image{position:relative;min-width:0}
+.song-card-image:before{content:"";position:absolute;z-index:1;inset:0 auto 0 0;width:34%;background:linear-gradient(90deg,#fbf8f3,rgba(251,248,243,0));pointer-events:none}
+.song-card-image img{display:block;width:100%;height:100%;object-fit:cover}
 .page-hero{padding:110px 0 86px}
 .page-hero h1{margin:0;font-size:clamp(36px,6vw,68px);font-weight:650;line-height:1.1;letter-spacing:-.06em}
 .page-hero .hero-copy{margin:25px 0 0;color:var(--muted);font-size:clamp(14px,1.8vw,18px);line-height:1.85;max-width:680px}
@@ -142,6 +156,7 @@ main{min-height:72vh}
   .hero-home:before{background:linear-gradient(0deg,rgba(255,250,244,.9) 0%,rgba(255,250,244,.58) 40%,rgba(255,250,244,.06) 72%)}
   .hero-home .eyebrow{margin-bottom:18px;font-size:10px}.hero-home h1{font-size:clamp(38px,10vw,46px);line-height:1.2}.hero-home .lead{margin-top:22px;font-size:14px;line-height:1.75}.hero-cta{height:50px;margin-top:28px;padding:0 22px}
   .product-gateway{padding:52px 0 78px}.product-gateway h2{font-size:23px;margin-bottom:25px}.choice-row{grid-template-columns:38px 1fr 22px;gap:12px;min-height:105px}.choice-copy strong{font-size:18px}.choice-copy span{font-size:12px}
+  .song-picker-page{width:calc(100% - 36px)}.song-picker{padding-top:42px}.song-card-list{grid-template-columns:1fr;gap:14px}.song-card{min-height:156px}.song-card-copy{padding:18px 12px 14px 18px}.song-card-number{margin-bottom:10px}.song-card-copy strong{font-size:20px}.song-card-copy i{width:25px;height:25px}
   .page-hero{padding:65px 0 55px}.page-hero h1{font-size:38px}.page-hero .hero-copy{font-size:14px}
   .section{padding:58px 0}.section-head{display:block;margin-bottom:30px}.section-head h2{font-size:27px}.section-head .eyebrow{margin-bottom:12px}
   .concern-list,.composition-list,.ba-panel,.faq-list,.detail-actions{margin-left:0}

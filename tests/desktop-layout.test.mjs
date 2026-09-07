@@ -17,11 +17,11 @@ const browser = [
 
 assert.ok(browser, "Edge, Chrome 또는 LAYOUT_BROWSER 환경 변수가 필요합니다")
 
-function measureLayout(width, height) {
+function measureFixture(filename, width, height) {
   const profile = mkdtempSync(resolve(tmpdir(), "wistia-layout-"))
 
   try {
-    const fixture = pathToFileURL(resolve(here, "desktop-layout.fixture.html")).href
+    const fixture = pathToFileURL(resolve(here, filename)).href
     const run = spawnSync(browser, [
       "--headless=new",
       "--disable-gpu",
@@ -41,6 +41,8 @@ function measureLayout(width, height) {
     rmSync(profile, { recursive: true, force: true })
   }
 }
+
+const measureLayout = (width, height) => measureFixture("desktop-layout.fixture.html", width, height)
 
 {
   const layout = measureLayout(1572, 900)
@@ -64,4 +66,21 @@ function measureLayout(width, height) {
     Math.abs(layout.hero.left - 22) <= 1 && Math.abs(layout.hero.right - (layout.viewport - 22)) <= 1,
     `모바일 히어로는 기존 22px 여백을 유지해야 합니다 (현재 ${layout.hero.left}px / ${layout.viewport - layout.hero.right}px)`
   )
+}
+
+{
+  const layout = measureFixture("song-picker-layout.fixture.html", 1200, 900)
+  assert.equal(layout.cards.length, 2, "축가 선택 카드는 두 개여야 합니다")
+  assert.deepEqual(layout.cards.map(card => card.href), ["#/detail/solo", "#/detail/duo"], "각 축가 카드는 해당 상세 페이지로 연결되어야 합니다")
+  assert.ok(
+    Math.abs(layout.cards[0].top - layout.cards[1].top) <= 1,
+    "데스크톱 축가 선택 카드는 같은 행에 배치되어야 합니다"
+  )
+  assert.ok(layout.cards.every(card => card.imageWidth >= card.width * .45), "각 카드의 이미지 영역은 카드 너비의 45% 이상이어야 합니다")
+}
+
+{
+  const layout = measureFixture("song-picker-layout.fixture.html", 390, 844)
+  assert.ok(layout.cards[1].top > layout.cards[0].top + layout.cards[0].height, "모바일 축가 선택 카드는 한 열로 쌓여야 합니다")
+  assert.ok(layout.cards.every(card => card.width >= 350), "모바일 축가 선택 카드는 콘텐츠 너비를 채워야 합니다")
 }
