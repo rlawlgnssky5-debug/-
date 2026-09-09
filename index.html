@@ -4,52 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="직접 부른 노래와 이야기를 웨딩 필름으로 완성하는 위스티아">
+  <meta name="description" content="위스티아 WISTIA — 웨딩 축가 녹음과 AR, 식전 영상, 축가 영상, 프로포즈 영상까지 내 목소리로 남기는 특별한 순간">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WISTIA — Wedding Vocal Film">
-  <meta property="og:description" content="직접 부른 노래와 이야기를 웨딩 필름으로 완성하는 위스티아">
-  <meta property="og:image" content="/assets/img/wistia-logo.png">
-  <title>WISTIA — Wedding Vocal Film</title>
+  <meta property="og:title" content="WISTIA — 우리의 목소리로 남기는 특별한 순간">
+  <meta property="og:description" content="웨딩 축가 녹음부터 식전·축가·프로포즈 영상까지, 위스티아에서 함께 준비하세요">
+  <meta property="og:image" content="/assets/img/wedding/03-lipsync-mv.webp">
+  <title>WISTIA — 우리의 목소리로 남기는 특별한 순간</title>
   <link rel="icon" type="image/png" href="assets/img/wistia-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="assets/img/hero/wistia-hero-main.webp" type="image/webp">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Noto+Serif+KR:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/app.js" defer></script>
+  <link rel="stylesheet" href="css/design.css?v=86">
+  <script src="js/app.js?v=86" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#app">본문으로 바로가기</a>
-  <header class="site-header" id="siteHeader">
-    <a class="wordmark" href="#/" aria-label="WISTIA 홈">WISTIA</a>
-    <nav class="category-nav" aria-label="상품 카테고리">
-      <a href="#/song" data-category="song">축가</a>
-      <a href="#/detail/wedding" data-category="wedding">식전영상</a>
-      <a href="#/detail/proposal" data-category="proposal">프로포즈</a>
-    </nav>
-  </header>
+  <header id="siteHeader"></header>
+  <a class="floating-kakao" id="floatingKakao" href="http://pf.kakao.com/_GbExjX/chat" target="_blank" rel="noopener noreferrer" aria-label="카카오톡으로 상담하기"><img src="assets/img/kakao-talk.png" alt="" width="56" height="56"><span>카카오톡 상담</span></a>
   <main id="app" tabindex="-1"></main>
-  <footer class="site-footer">
-    <div><strong>WISTIA</strong><p>Wedding Vocal Film</p></div>
-    <nav aria-label="외부 채널">
-      <a id="instagramLink" href="https://www.instagram.com/wistia.film/" target="_blank" rel="noopener">Instagram</a>
-      <a id="youtubeLink" href="https://www.youtube.com/@wistia_film" target="_blank" rel="noopener">YouTube</a>
-      <a id="kakaoFooterLink" href="http://pf.kakao.com/_GbExjX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
-    </nav>
-  </footer>
-  <div class="modal" id="consultModal" aria-hidden="true">
-    <button class="modal-backdrop" type="button" data-close-modal aria-label="상담 팝업 닫기"></button>
-    <section class="modal-sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <p class="eyebrow">CONSULTATION</p>
-      <h2 id="modalTitle">상담 내용을 복사해주세요</h2>
-      <p class="modal-help">선택하신 상품과 이벤트 정보가 정리되어 있어요<br>복사한 뒤 카카오톡 상담창에 붙여넣어 보내주세요</p>
-      <div class="copy-preview"><span>상담 내용</span><pre id="consultPreview"></pre></div>
-      <button class="button button-dark" id="copyConsult" type="button">상담 내용 복사하기</button>
-      <button class="button button-kakao" id="openKakao" type="button" disabled>카카오톡 상담 열기</button>
-      <button class="button button-quiet" type="button" data-close-modal>닫기</button>
-    </section>
-  </div>
-  <noscript>이 사이트의 상품 탐색과 이벤트 계산을 이용하려면 JavaScript를 활성화해 주세요</noscript>
+  <dialog id="mediaDialog" aria-label="영상, 고객 후기 및 상담 내용"></dialog>
+  <noscript>상품 탐색과 이벤트 계산을 이용하려면 JavaScript를 활성화해 주세요<br><a href="http://pf.kakao.com/_GbExjX/chat">카카오톡 상담 바로가기</a></noscript>
 </body>
 </html>

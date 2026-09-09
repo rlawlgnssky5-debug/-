@@ -47,24 +47,28 @@ const measureLayout = (width, height) => measureFixture("desktop-layout.fixture.
 {
   const layout = measureLayout(1572, 900)
   assert.ok(
-    Math.abs(layout.hero.left - layout.wordmark.left) <= 1,
-    `히어로 왼쪽(${layout.hero.left}px)이 헤더 왼쪽(${layout.wordmark.left}px)과 일치해야 합니다`
+    Math.abs((layout.heroShell.left + layout.heroShell.right) / 2 - layout.viewport / 2) <= 1,
+    "데스크톱 히어로 카드가 화면 중앙에 놓여야 합니다"
   )
   assert.ok(
-    Math.abs(layout.hero.right - (layout.viewport - layout.wordmark.left)) <= 1,
-    `히어로 오른쪽(${layout.hero.right}px)이 공통 컨테이너 오른쪽 기준과 일치해야 합니다`
+    Math.abs((layout.hero.left + layout.hero.right) / 2 - layout.viewport / 2) <= 1,
+    "데스크톱 히어로 문구가 화면 중앙축에 놓여야 합니다"
   )
   assert.ok(
-    layout.gateway.left >= layout.hero.left && layout.gateway.right <= layout.hero.right,
-    "아래 상품 콘텐츠가 히어로의 공통 데스크톱 가이드 안에 있어야 합니다"
+    layout.gateway.left >= layout.heroShell.left && layout.gateway.right <= layout.heroShell.right,
+    "아래 상품 콘텐츠가 히어로 이미지의 공통 데스크톱 가이드 안에 있어야 합니다"
   )
 }
 
 {
   const layout = measureLayout(390, 844)
   assert.ok(
-    Math.abs(layout.hero.left - 22) <= 1 && Math.abs(layout.hero.right - (layout.viewport - 22)) <= 1,
-    `모바일 히어로는 기존 22px 여백을 유지해야 합니다 (현재 ${layout.hero.left}px / ${layout.viewport - layout.hero.right}px)`
+    Math.abs(layout.heroShell.left) <= 1 && Math.abs(layout.heroShell.right - layout.viewport) <= 1,
+    `모바일 히어로 사진은 화면 너비를 온전히 사용해야 합니다 (현재 ${layout.heroShell.left}px / ${layout.viewport - layout.heroShell.right}px)`
+  )
+  assert.ok(
+    Math.abs((layout.hero.left + layout.hero.right) / 2 - layout.viewport / 2) <= 1,
+    "모바일 히어로 문구가 화면 중앙축에 놓여야 합니다"
   )
 }
 

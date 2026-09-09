@@ -1,0 +1,18 @@
+const {chromium}=require(process.env.WISTIA_NODE_MODULES+'/playwright')
+;(async()=>{
+const b=await chromium.launch({headless:true,executablePath:'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'})
+const p=await b.newPage({viewport:{width:1440,height:1000}})
+const failures=[]
+p.on('requestfailed',r=>failures.push({url:r.url(),error:r.failure().errorText}))
+await p.goto('http://127.0.0.1:4173/?v=60#/')
+await p.locator('.situation-home').waitFor()
+await p.evaluate(()=>document.fonts.ready)
+console.log('fonts',await p.evaluate(()=>({body:getComputedStyle(document.body).fontFamily,loaded:[...document.fonts].map(x=>({family:x.family,status:x.status})).slice(0,12)})))
+await p.locator('[data-video]').first().click()
+await p.waitForTimeout(12000)
+console.log('frames',p.frames().map(f=>f.url()))
+console.log('frame text',await p.frames()[1]?.locator('body').innerText().catch(e=>e.message))
+console.log('failures',failures)
+await p.screenshot({path:__dirname+'/qa/video-loaded.png'})
+await b.close()
+})().catch(e=>{console.error(e);process.exitCode=1})
