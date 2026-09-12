@@ -52,9 +52,15 @@ fs.mkdirSync(OUT,{recursive:true})
     assert.match(await page.locator('[data-inline-youtube]').getAttribute('data-inline-youtube'),/pTBfPEWlyZU/)
     assert.equal(await page.locator('.detail-inline-video img').count(),1,'proposal YouTube video has a visible preview before playback')
     assert.equal(await page.locator('.selected-format-section').count(),0,'proposal detail does not repeat the selected format summary')
-     assert.deepEqual(await page.locator('[data-process-panel="live"] h3').allTextContents(),['맞춤 제작 상담','1:1 보컬 디렉팅 & 구간별 녹음','스토리 영상 촬영','디테일 수작업 보컬 보정','전문 엔지니어 믹싱 & 마스터링','영상 편집 & 색감 보정','최종 검수 & 완성본 전달'],'proposal follows the full seven-step film process')
+     assert.deepEqual(await page.locator('[data-process-panel="live"] h3').allTextContents(),['맞춤 제작 상담','1:1 보컬 디렉팅 & 구간별 녹음','뮤비 클립 촬영','디테일 수작업 보컬 보정','전문 엔지니어 믹싱 & 마스터링','영상 편집 & 색감 보정','최종 검수 & 완성본 전달'],'proposal follows the full seven-step film process')
      assert.equal(await page.locator('[data-process-panel="live"] .process-image img').count(),6,'proposal uses six correctly matched working images')
-     assert.match(await page.locator('[data-process-panel="live"] .process-duration-card').textContent(),/약 14일/)
+     assert.match(await page.locator('[data-process-panel="live"] .process-duration-line').textContent(),/제작 기간.*약 14일.*정확한 일정을 안내합니다/s)
+     assert.equal(await page.locator('.proposal-process-section .process-type-note').count(),0,'proposal omits the redundant price-screen note')
+     assert.equal(await page.locator('.proposal-reviews').count(),1,'proposal uses the compact review section')
+     assert.equal(await page.locator('[data-process-panel="live"] .process-accordion details[open]').count(),0,'proposal keeps every production step closed at first')
+     await page.locator('[data-process-panel="live"] summary[data-process-step]').nth(1).click()
+     assert.equal(await page.locator('[data-process-panel="live"] .process-accordion details[open]').count(),1,'proposal keeps only the selected production step open')
+     assert.equal(await page.locator('[data-process-panel="live"] .process-accordion details').nth(1).getAttribute('open'),'','proposal expands the production step that was selected')
    }
    if(['/choose/wedding','/choose/duet-film','/choose/solo-film','/choose/proposal'].includes(route)){
     assert.equal(await page.locator('.film-format-card,[data-film-format]').count(),0,'legacy choice routes now show product details rather than a format selector')
@@ -97,10 +103,19 @@ fs.mkdirSync(OUT,{recursive:true})
     assert.equal(await page.locator('#mobilePrice del').count(),0,'normal price is not crossed out before an event discount is selected')
    }
    if(['/event/wedding','/event/duet-film','/event/solo-film','/event/proposal'].includes(route)){
-    assert.deepEqual(await page.locator('.booking-format-card strong').allTextContents(),['뮤비 클립 필름','녹음 메이킹 필름'])
     assert.equal(await page.locator('[data-film-format]').count(),2,'each film booking page provides both format choices')
-    assert.ok(await page.locator('.booking-format-media img').count()>=2,'format choices show their real example images in the price page')
+    if(route!='/event/proposal'){
+     assert.deepEqual(await page.locator('.booking-format-card strong').allTextContents(),['뮤비 클립 필름','녹음 메이킹 필름'])
+     assert.ok(await page.locator('.booking-format-media img').count()>=2,'format choices show their real example images in the price page')
+    }
     assert.equal(await page.locator('.package-section').getAttribute('open'),null,'type-specific included work starts collapsed')
+   }
+   if(route==='/event/proposal'){
+    assert.equal(await page.locator('.booking-format-toggle').count(),1,'proposal uses a compact format toggle')
+    assert.equal(await page.locator('.booking-format-card').count(),0,'proposal removes the large side-by-side format cards')
+    assert.equal(await page.locator('.proposal-format-selector > #bookingSummary').count(),1,'proposal places the price table directly below the format choice')
+    await page.locator('.booking-format-toggle label').nth(1).click()
+    assert.match(await page.locator('[data-proposal-format-preview]').textContent(),/녹음 메이킹 필름.*인서트 컷/s)
    }
    if(route==='/event/duet-film'){
     assert.deepEqual(await page.locator('.booking-format-card').nth(1).locator('.booking-format-media img').evaluateAll(images=>images.map(image=>image.getAttribute('src'))),['assets/img/duet-film/making-female.webp','assets/img/duet-film/making-male.webp'],'duet recording-making option uses both supplied recording photos')

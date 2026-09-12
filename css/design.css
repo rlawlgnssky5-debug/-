@@ -274,6 +274,21 @@ body[data-page=home] .floating-kakao{bottom:28px}
 .process-type-tabs strong>span{font-size:19px;line-height:1;letter-spacing:0}
 .process-type-panel[hidden]{display:none}
 .process-type-note{margin-top:38px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.process-accordion{border-top:1px solid #aeb8bd}
+.process-accordion details{border-bottom:1px solid var(--line)}
+.process-accordion summary{list-style:none;display:grid;grid-template-columns:52px minmax(0,1fr) 30px;align-items:center;gap:18px;min-height:92px;padding:20px 4px;cursor:pointer}
+.process-accordion summary::-webkit-details-marker{display:none}
+.process-accordion summary>span{font:400 16px/1 Georgia,serif;color:#8d989d}
+.process-accordion summary h3{font-size:22px;font-weight:500;line-height:1.5}
+.process-accordion summary b{font-size:26px;font-weight:300;line-height:1;text-align:center;transition:transform .2s ease}
+.process-accordion details[open] summary b{transform:rotate(45deg)}
+.process-accordion-body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(250px,.75fr);gap:38px;align-items:center;padding:0 4px 34px 70px}
+.process-accordion-body .process-image,.process-accordion-body .process-duration-card{margin:0}
+.process-accordion-body>p{font-size:15px;line-height:1.9;color:#59666c}
+.process-duration-line{display:grid;grid-template-columns:auto 1fr;gap:8px 24px;align-items:baseline;padding:20px 0;border-top:1px solid #aeb8bd;border-bottom:1px solid var(--line)}
+.process-duration-line>span{font-size:11px;letter-spacing:.08em;color:#748188}
+.process-duration-line>strong{font:500 34px/1.2 "Noto Serif KR",serif;letter-spacing:-.05em;color:#273236}
+.process-duration-line>small{grid-column:1/-1;font-size:12px;line-height:1.7;color:#69757b}
 
 /* v70 — visible price calculator and compact package facts */
 .package-section{margin-bottom:54px!important}
@@ -506,6 +521,56 @@ html,body{overflow-x:clip}
 }
 @media(max-width:540px){
  .process-list.has-images{grid-template-columns:1fr;gap:34px}
+ .process-accordion summary{grid-template-columns:34px minmax(0,1fr) 24px;gap:10px;min-height:74px;padding:16px 0}
+ .process-accordion summary>span{font-size:13px}
+ .process-accordion summary h3{font-size:17px}
+ .process-accordion summary b{font-size:22px}
+ .process-accordion-body{grid-template-columns:1fr;gap:15px;padding:0 0 25px 44px}
+ .process-accordion-body>p{font-size:13px;line-height:1.8}
+ .process-duration-line{padding:16px 0;gap:7px 16px}
+ .process-duration-line>strong{font-size:29px}
+}
+
+/* v108 — compact proposal process, reviews and toggle-first price flow */
+.proposal-reviews{padding-block:64px}
+.proposal-reviews .review-carousel-head{margin-bottom:28px}
+.proposal-reviews .section-heading h2{font-size:34px}
+.proposal-reviews .section-heading div>p{margin-top:10px}
+.proposal-reviews .review-set .review-capture{flex-basis:clamp(220px,23vw,300px);width:clamp(220px,23vw,300px)}
+.booking-format-toggle{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #aeb8bd;margin-top:22px}
+.booking-format-toggle label{position:relative;cursor:pointer}
+.booking-format-toggle label+label{border-left:1px solid #aeb8bd}
+.booking-format-toggle input{position:absolute;opacity:0;pointer-events:none}
+.booking-format-toggle label>span{display:grid;place-items:center;gap:5px;min-height:76px;padding:14px;text-align:center;color:#68747a;background:#fff}
+.booking-format-toggle strong{font-size:16px;font-weight:500}
+.booking-format-toggle b{font-size:12px;font-weight:500}
+.booking-format-toggle label:has(input:checked)>span{background:#293335;color:#fff}
+.booking-format-toggle input:focus-visible+span{outline:2px solid #65757c;outline-offset:3px}
+.proposal-format-preview{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(220px,.85fr);gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
+.proposal-format-preview .booking-format-media{margin:0}
+.proposal-format-preview>div>strong{display:block;font-size:21px;font-weight:500}
+.proposal-format-preview>div>p{margin-top:10px;font-size:13px;line-height:1.8;color:var(--muted)}
+.proposal-inline-summary{position:static;margin-top:28px;padding:30px;background:var(--wash)}
+.proposal-booking-checkout{position:static;max-height:none;overflow:visible}
+@media(max-width:800px){
+ .proposal-reviews{padding-block:48px}
+ .proposal-reviews .section-heading{margin-bottom:0}
+ .proposal-reviews .section-heading h2{font-size:28px}
+ .proposal-reviews .review-set .review-capture{flex-basis:min(68vw,270px);width:min(68vw,270px)}
+ .proposal-format-preview{grid-template-columns:1fr;gap:16px}
+ .proposal-format-preview .booking-format-media{aspect-ratio:16/8}
+ .proposal-inline-summary{margin-top:22px;padding:24px 20px}
+}
+@media(max-width:540px){
+ .proposal-reviews{padding-block:40px}
+ .proposal-reviews .review-carousel-head{margin-bottom:20px}
+ .proposal-reviews .section-heading h2{font-size:25px}
+ .proposal-reviews .section-heading div>p{font-size:12px;margin-top:7px}
+ .booking-format-toggle label>span{min-height:68px;padding:11px 6px}
+ .booking-format-toggle strong{font-size:13px}
+ .booking-format-toggle b{font-size:11px}
+ .proposal-format-preview>div>strong{font-size:18px}
+ .proposal-format-preview>div>p{font-size:12px}
 }
 
 /* v87 — compact brand, labeled facts and controllable review carousel */
@@ -674,6 +739,7 @@ html,body{overflow-x:clip}
  .ratio-buttons button{padding-inline:5px}
  .ratio-buttons button.is-popular>span{font-size:21px}
 }
+.booking-checkout.proposal-booking-checkout{position:static;max-height:none;overflow:visible}
 @media(max-width:380px){
  .ratio-buttons button.is-popular>small{padding-inline:5px;font-size:7px}
  .ratio-buttons button.is-safe>small{font-size:7px}
