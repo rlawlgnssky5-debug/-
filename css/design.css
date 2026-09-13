@@ -29,6 +29,66 @@
 .package-group h3{font-size:13px;font-weight:600;letter-spacing:.05em;color:#56646a;margin-bottom:11px}
 .package-group .package-list{grid-template-columns:1fr}
 @media(max-width:800px){.package-groups{grid-template-columns:1fr;gap:24px}}
+
+/* v111 — one continuous price calculator */
+body[data-page=event]{background:#f5f7f7}
+.booking-calculator-wrap{max-width:920px;padding-top:52px}
+.booking-calculator{background:#fff;border:1px solid #d9dfe1;padding:0 54px 54px}
+.calculator-intro{padding:48px 0 42px}
+.calculator-intro>.text-link{margin-bottom:38px}
+.calculator-intro>.eyebrow{margin-bottom:14px}
+.calculator-intro h1{font-size:32px;font-weight:400;letter-spacing:-.045em;line-height:1.35}
+.calculator-step{position:relative;margin:0;padding:42px 0}
+.calculator-step+.calculator-step{margin-top:12px}
+.calculator-step>.booking-step{margin-bottom:11px}
+.calculator-step>h2{font-size:28px;margin:0}
+.calculator-step>p{margin:10px 0 25px;color:var(--muted);font-size:14px}
+.consultation-step{background:#f4f6f6;padding:38px 40px}
+.checkout-fields{gap:14px 18px}
+.checkout-field{padding:0;border:0}
+.checkout-field>span{margin-bottom:8px}
+.checkout-field input,.checkout-field select{height:48px;background:#fff;border:1px solid #d7dddf;padding:0 14px}
+.checkout-field input:focus,.checkout-field select:focus{border:1px solid #6d797e}
+.booking-availability{margin:16px 0 0!important}
+.booking-film-format{padding:42px 0;margin:0;border:0}
+.booking-format-grid{gap:18px}
+.booking-format-card{padding:18px;border-color:#d9dfe1}
+.booking-format-card:has(input:checked){background:#f3f6f6;border-color:#59666c;box-shadow:inset 0 0 0 1px #59666c}
+.booking-format-card small{min-height:42px}
+.calculator-option-list{display:grid;gap:12px}
+.booking-calculator .option-choice,.booking-calculator .option-notice{border:0;background:#f4f6f6;padding:18px 20px}
+.booking-calculator .song-option-card{border-color:#d9dfe1}
+.booking-calculator .event-benefits{border:0;background:#f4f6f6;padding:0;margin:12px 0}
+.booking-calculator .event-benefits>summary{padding:30px 32px}
+.booking-calculator .event-benefits>summary small{font-size:10px;letter-spacing:.16em}
+.booking-calculator .event-benefits>summary em{font-style:normal;color:var(--muted);font-size:12px}
+.booking-calculator .event-benefits-body{padding:0 32px 30px}
+.booking-calculator .event-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0}
+.booking-calculator .event-choice{border:0;background:#fff;padding:16px}
+.calculator-result{position:static!important;max-height:none!important;overflow:visible!important;background:#293335!important;color:#fff;padding:38px 40px 40px;margin-top:54px}
+.calculator-result>.booking-step{color:#b9c2c5}
+.calculator-result .booking-summary{position:static;background:transparent;padding:0}
+.calculator-result .booking-summary h2,.calculator-result .booking-summary dt,.calculator-result .booking-summary dd,.calculator-result .price-formula,.calculator-result .price-formula strong{color:#fff}
+.calculator-result .booking-summary dt,.calculator-result .price-formula small,.calculator-result .fine{color:#c8d0d2}
+.calculator-result .price-formula,.calculator-result .summary-total{border-color:#657074}
+.calculator-result>.button{width:100%;margin-top:26px;background:#fff;color:#293335}
+.booking-calculator-wrap+.other-products{padding-top:38px}
+@media(max-width:800px){
+ body[data-page=event]{background:#fff}
+ .booking-calculator-wrap{width:100%;padding:0}
+ .booking-calculator{border:0;padding:0 24px 42px}
+ .calculator-intro{padding:36px 0 30px}
+ .calculator-intro>.text-link{margin-bottom:30px}
+ .calculator-intro h1{font-size:28px}
+ .consultation-step{margin-inline:-24px;padding:32px 24px}
+ .calculator-step{padding-block:34px}
+ .calculator-step>h2{font-size:24px}
+ .booking-calculator .event-list{grid-template-columns:1fr}
+ .booking-calculator .event-benefits>summary{padding:25px 22px}
+ .booking-calculator .event-benefits-body{padding:0 22px 25px}
+ .calculator-result{margin:34px -24px 0;padding:32px 24px 34px}
+ .calculator-result>.button{display:none}
+}
 @media(max-width:800px){.scene-grid.with-images li:nth-child(3n) .index:after{content:"→"}.scene-grid.with-images li:nth-child(2n):not(:last-child) .index:after{content:"↘"}.home-mobile-cta{display:block;position:fixed;z-index:35;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:10px 24px calc(10px + env(safe-area-inset-bottom))}.home-mobile-cta .button{width:100%;min-height:50px}body[data-page=home] .footer{padding-bottom:120px}body[data-page=home] .floating-kakao{bottom:95px}}
 @media(max-width:540px){.hero-bottom>.text-link{display:none}.scene-copy .index{display:flex;flex-direction:row;align-items:center;gap:12px}.floating-kakao{width:48px;height:48px;overflow:hidden;border-radius:15px}.floating-kakao img{position:absolute;max-width:none;width:57px;height:57px;left:50%;top:50%;transform:translate(-50%,-50%)}}
 @media(prefers-reduced-motion:no-preference){@keyframes arrive{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}.home-hero,.detail-hero,.picker,.booking-head{animation:arrive .45s ease both}details[open]>p{animation:arrive .22s ease both}}
@@ -752,4 +812,18 @@ html,body{overflow-x:clip}
 @media(max-width:380px){
  .ratio-buttons button.is-popular>small{padding-inline:5px;font-size:7px}
  .ratio-buttons button.is-safe>small{font-size:7px}
+}
+
+/* v112 — remove legacy section dividers inside the unified calculator */
+body[data-page=event] .booking-calculator .booking-film-format{
+ padding:42px 0;
+ margin:0;
+ border:0;
+}
+@media(max-width:800px){
+ body[data-page=event] .booking-calculator .booking-film-format{
+  padding:34px 0;
+  margin:0;
+  border:0;
+ }
 }
